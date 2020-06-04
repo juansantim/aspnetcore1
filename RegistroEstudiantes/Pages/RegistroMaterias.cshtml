@@ -1,0 +1,42 @@
+﻿@page
+@model RegistroEstudiantes.Pages.RegistroMateriasModel
+@{
+}
+
+    <table class="table">
+
+        @foreach (var materia in Model.Materias)
+        {
+        <tr>
+            <td> @materia.Id </td>
+            <td>
+                @materia.Codigo
+            </td>
+            <td> @materia.Nombre </td>
+            <td> @materia.Area </td>
+            <td> @materia.Disponible </td>
+        </tr>
+        }
+
+        @*<tr>
+            <td>prueba</td>
+            <td>prueba</td>
+            <td>prueba</td>
+            <td>prueba</td>
+        </tr>
+        <tr>
+            <td>prueba</td>
+            <td>prueba</td>
+            <td>prueba</td>
+            <td>prueba</td>
+        </tr>
+        <tr>
+            <td>prueba</td>
+            <td>prueba</td>
+            <td>prueba</td>
+            <td>prueba</td>
+        </tr>*@
+    </table>
+
+<h1> @Model.Mensaje </h1>
+
