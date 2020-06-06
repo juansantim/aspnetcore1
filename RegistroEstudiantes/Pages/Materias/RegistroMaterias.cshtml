@@ -3,7 +3,27 @@
 @{
 }
 
+    <form method="get">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="texto" asp-for="Texto" >
+            
+            <div class="input-group-append">
+                <button class="input-group-text" type="submit">Buscar</button>
+            </div>
+        </div>
+    </form>
+
     <table class="table">
+
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Codigo</th>
+                <th>Nombre</th>
+                <th>Area</th>
+                <th>Disponible</th>
+            </tr>
+        </thead>
 
         @foreach (var materia in Model.Materias)
         {
@@ -15,6 +35,7 @@
             <td> @materia.Nombre </td>
             <td> @materia.Area </td>
             <td> @materia.Disponible </td>
+            <td> <a asp-page="./DetalleMateria" asp-route-Id="@materia.Id"  class="btn btn-success" style="cursor:pointer">Ver detalle</a>  </td>
         </tr>
         }
 

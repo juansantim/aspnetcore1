@@ -15,7 +15,10 @@ namespace RegistroEstudiantes.Pages
         private IConfiguration config;
         public IMateriaService MateriaService;
         public string Mensaje { get; set; }
-        
+
+        [BindProperty(SupportsGet = true)]
+        public string Texto { get; set; }
+
         public IList<Materia> Materias { get; set; }
 
         public RegistroMateriasModel(IConfiguration config, IMateriaService materiaService)
@@ -28,7 +31,8 @@ namespace RegistroEstudiantes.Pages
         public void OnGet()
         {
             this.Mensaje = config["Mensaje"];
-            this.Materias = MateriaService.GetAll();
+
+            this.Materias = MateriaService.GetMateriasPorNombre(Texto);
         }
     }
 }

@@ -13,6 +13,8 @@ namespace RegistroEstudiantes.Model
         public Area Area { get; set; }
 
         public bool Disponible { get; set; }
+
+        public string Objetivos { get; set; }
     }
 
 }
