@@ -14,6 +14,9 @@ namespace RegistroEstudiantes
         private readonly IMateriaService service;
         public Materia Materia { get; set; }
 
+        [TempData]
+        public string Mensaje { get; set; }
+
         public DetalleMateriaModel(IMateriaService service)
         {
             this.service = service;

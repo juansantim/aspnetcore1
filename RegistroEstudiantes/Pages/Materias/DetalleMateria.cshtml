@@ -4,6 +4,17 @@
     ViewData["Title"] = "DetalleMateria";
 }
 
+@if (!string.IsNullOrEmpty(Model.Mensaje))
+{
+    <div class="alert alert-success" role="alert">
+        @Model.Mensaje
+    </div>
+
+    <br />
+    <br />
+
+}
+
 <h2>@Model.Materia.Nombre</h2>
 
 <div>

@@ -10,6 +10,10 @@ namespace RegistroEstudiantes.Data
     {
         IList<Materia> GetMateriasPorNombre(string texto);
         Materia GetMateriaPorId(int Id);
+
+        Materia ActualizarMateria(Materia materiaActualizada);
+
+        Materia CrearMateria(Materia materia);
     }
 
     public class inMemoryMateriasService : IMateriaService
@@ -28,6 +32,27 @@ namespace RegistroEstudiantes.Data
 
             };
 
+        }
+
+        public Materia ActualizarMateria(Materia materiaActualizada)
+        {
+            var materiaExistente = materias.SingleOrDefault(m => m.Id == materiaActualizada.Id);
+            materiaExistente.Nombre = materiaActualizada.Nombre;
+            materiaExistente.Codigo = materiaActualizada.Codigo;
+            materiaExistente.Objetivos = materiaActualizada.Objetivos;
+            materiaExistente.Disponible = materiaActualizada.Disponible;
+            materiaExistente.Area = materiaActualizada.Area;
+
+            return materiaExistente;
+        }
+
+        public Materia CrearMateria(Materia materia)
+        {
+            materia.Id = materias.Max(m => m.Id) + 1;
+
+            materias.Add(materia);
+
+            return materia;
         }
 
         public Materia GetMateriaPorId(int Id)

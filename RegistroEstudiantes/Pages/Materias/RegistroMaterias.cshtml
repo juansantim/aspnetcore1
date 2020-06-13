@@ -27,37 +27,22 @@
 
         @foreach (var materia in Model.Materias)
         {
-        <tr>
-            <td> @materia.Id </td>
-            <td>
-                @materia.Codigo
-            </td>
-            <td> @materia.Nombre </td>
-            <td> @materia.Area </td>
-            <td> @materia.Disponible </td>
-            <td> <a asp-page="./DetalleMateria" asp-route-Id="@materia.Id"  class="btn btn-success" style="cursor:pointer">Ver detalle</a>  </td>
-        </tr>
+    <tr>
+        <td> @materia.Id </td>
+        <td>
+            @materia.Codigo
+        </td>
+        <td> @materia.Nombre </td>
+        <td> @materia.Area </td>
+        <td> @materia.Disponible </td>
+        <td> <a asp-page="./DetalleMateria" asp-route-Id="@materia.Id" class="btn btn-success" style="cursor:pointer">Ver detalle</a>  </td>
+        <td> <a asp-page="./Editar" asp-route-Id="@materia.Id" class="btn btn-warning" style="cursor:pointer">Editar</a>  </td>
+    </tr>
         }
 
-        @*<tr>
-            <td>prueba</td>
-            <td>prueba</td>
-            <td>prueba</td>
-            <td>prueba</td>
-        </tr>
-        <tr>
-            <td>prueba</td>
-            <td>prueba</td>
-            <td>prueba</td>
-            <td>prueba</td>
-        </tr>
-        <tr>
-            <td>prueba</td>
-            <td>prueba</td>
-            <td>prueba</td>
-            <td>prueba</td>
-        </tr>*@
     </table>
+
+<a asp-page="./Editar" class="btn btn-success">Crear Materia</a>
 
 <h1> @Model.Mensaje </h1>
 
