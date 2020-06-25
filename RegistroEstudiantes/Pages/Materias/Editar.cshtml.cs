@@ -56,7 +56,9 @@ namespace RegistroEstudiantes.Pages.Materias
                     Materia = service.ActualizarMateria(Materia);
                     TempData["Mensaje"] = "Registro Actualizado Correctamente";
                 }
-                
+
+                service.GuardarCambios();
+
                 return RedirectToPage("./DetalleMateria", new { Id = Materia.Id });
             }
 
