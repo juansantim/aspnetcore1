@@ -31,8 +31,12 @@ namespace RegistroEstudiantes
             });
 
             //services.AddSingleton<IMateriaService, inMemoryMateriasService>();
-            services.AddScoped<IMateriaService, RegistroEstudiantesService>();
-            
+            //services.AddScoped<IMateriaService, RegistroEstudiantesService>();
+            services.AddScoped<IMateriaService, RegistroEstudiantesServiceAdo>(sp => 
+            {
+                return new RegistroEstudiantesServiceAdo(Configuration.GetConnectionString("RegistroEstudiantesDB"));
+            });
+
 
             services.AddRazorPages();
         }

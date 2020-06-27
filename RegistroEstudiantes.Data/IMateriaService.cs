@@ -7,6 +7,7 @@ namespace RegistroEstudiantes.Data
     public interface IMateriaService
     {
         IList<Materia> GetMateriasPorNombre(string texto);
+
         Materia GetMateriaPorId(int Id);
 
         Materia ActualizarMateria(Materia materiaActualizada);
