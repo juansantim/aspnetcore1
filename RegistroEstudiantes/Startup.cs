@@ -31,14 +31,14 @@ namespace RegistroEstudiantes
             });
 
             //services.AddSingleton<IMateriaService, inMemoryMateriasService>();
-            //services.AddScoped<IMateriaService, RegistroEstudiantesService>();
-            services.AddScoped<IMateriaService, RegistroEstudiantesServiceAdo>(sp => 
-            {
-                return new RegistroEstudiantesServiceAdo(Configuration.GetConnectionString("RegistroEstudiantesDB"));
-            });
-
+            services.AddScoped<IMateriaService, RegistroEstudiantesService>();
+            //services.AddScoped<IMateriaService, RegistroEstudiantesServiceAdo>(sp => 
+            //{
+            //    return new RegistroEstudiantesServiceAdo(Configuration.GetConnectionString("RegistroEstudiantesDB"));
+            //});
 
             services.AddRazorPages();
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,6 +65,7 @@ namespace RegistroEstudiantes
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapControllers();
             });
         }
     }

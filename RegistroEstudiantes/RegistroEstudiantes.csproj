@@ -16,6 +16,10 @@
     <ProjectReference Include="..\RegistroEstudiantes.Data\RegistroEstudiantes.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\Shared\Components\ConteoMaterias\" />
+  </ItemGroup>
+
 
 
 </Project>

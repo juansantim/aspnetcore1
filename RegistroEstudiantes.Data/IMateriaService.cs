@@ -15,5 +15,7 @@ namespace RegistroEstudiantes.Data
         Materia CrearMateria(Materia materia);
 
         int GuardarCambios();
+        Materia Eliminar(int id);
+        int GetTotalMateriasRegistradas();
     }
 }

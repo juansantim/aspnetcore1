@@ -187,5 +187,15 @@ namespace RegistroEstudiantes.Data
             rowsAffected += cmd.ExecuteNonQuery();
             conn.Close();
         }
+
+        public Materia Eliminar(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int GetTotalMateriasRegistradas()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

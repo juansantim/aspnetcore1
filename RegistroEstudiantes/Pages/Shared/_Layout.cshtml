@@ -42,6 +42,11 @@
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2020 - RegistroEstudiantes - <a asp-area="" asp-page="/Privacy">Privacy</a>
+
+            <vc:conteo-materias></vc:conteo-materias>
+
+            <br />
+            @RenderSection("pieDePagina", required: false)
         </div>
     </footer>
 

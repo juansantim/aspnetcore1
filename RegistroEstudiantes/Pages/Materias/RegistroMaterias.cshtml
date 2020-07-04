@@ -1,7 +1,12 @@
-﻿@page
+﻿@page 
 @model RegistroEstudiantes.Pages.RegistroMateriasModel
 @{
 }
+
+    @if (!string.IsNullOrEmpty(Model.MensajeEliminacion)) 
+    {        
+        <label class="alert-info">@Model.MensajeEliminacion</label>
+    }
 
     <form method="get">
         <div class="input-group mb-3">
@@ -13,7 +18,13 @@
         </div>
     </form>
 
-    <table class="table">
+    @foreach (var materia in Model.Materias)
+    {
+        <partial name="_ResumenMateria" model="materia" />
+        <br />
+    }
+
+    @*<table class="table">
 
         <thead>
             <tr>
@@ -37,12 +48,17 @@
         <td> @materia.Disponible </td>
         <td> <a asp-page="./DetalleMateria" asp-route-Id="@materia.Id" class="btn btn-success" style="cursor:pointer">Ver detalle</a>  </td>
         <td> <a asp-page="./Editar" asp-route-Id="@materia.Id" class="btn btn-warning" style="cursor:pointer">Editar</a>  </td>
+        <td> <a asp-page="./Eliminar" asp-route-Id="@materia.Id" class="btn btn-danger" style="cursor:pointer">Elimnar</a>  </td>
     </tr>
         }
 
-    </table>
+    </table>*@
 
 <a asp-page="./Editar" class="btn btn-success">Crear Materia</a>
 
 <h1> @Model.Mensaje </h1>
 
+
+@section pieDePagina{ 
+    <label class="alert-info">Este es la pagina de Registro</label>
+}

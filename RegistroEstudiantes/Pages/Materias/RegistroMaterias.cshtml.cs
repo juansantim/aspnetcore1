@@ -19,6 +19,10 @@ namespace RegistroEstudiantes.Pages
         [BindProperty(SupportsGet = true)]
         public string Texto { get; set; }
 
+        [TempData]
+        public string MensajeEliminacion { get; set; }
+
+
         public IList<Materia> Materias { get; set; }
 
         public RegistroMateriasModel(IConfiguration config, IMateriaService materiaService)
