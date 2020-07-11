@@ -24,6 +24,11 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Materias/RegistroMaterias">Registro de Materias</a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Cafeteria/Categorias/Lista">Categorias</a>
+                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacidad</a>
                         </li>
@@ -43,7 +48,7 @@
         <div class="container">
             &copy; 2020 - RegistroEstudiantes - <a asp-area="" asp-page="/Privacy">Privacy</a>
 
-            <vc:conteo-materias></vc:conteo-materias>
+            @*<vc:conteo-materias></vc:conteo-materias>*@
 
             <br />
             @RenderSection("pieDePagina", required: false)

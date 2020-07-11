@@ -1,0 +1,51 @@
+﻿@page
+@model RegistroEstudiantes.Pages.Cafeteria.Categorias.EditarModel
+@{
+    ViewData["Title"] = "Editar";
+}
+
+    <h1>Matenimiento de Categorias</h1>
+
+<div ng-app="Categorias">
+    <div ng-controller="CategoriaCtrl">
+
+        <div class="form-group">
+            <label>Id</label>
+            <input ng-model="Categoria.Id" type="text" class="form-control" readonly />
+        </div>
+        
+        <div class="form-group">
+            <label>Nombre</label>
+            <input ng-model="Categoria.Nombre" type="text" class="form-control" />
+        </div>
+
+        <h2>Productos</h2>
+        <table class="table table-striped">
+           <thead>
+               <tr>
+                   <th>Id</th>
+                   <th>Codigo</th>
+                   <th>Nombre</th>
+               </tr>
+           </thead>
+            <tbody>
+                <tr ng-repeat="p in Categoria.Productos">
+                    <td>{{p.Id}}</td>
+                    <td> <input type="text" class="form-control" ng-model="p.Codigo" /> </td>
+                    <td> <input type="text" class="form-control" ng-model="p.Nombre" /></td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn btn-primary" ng-click="AgregarProducto()" >Agregar</button>
+        <button class="btn btn-success float-right" ng-click="GuardarCambios()" >Guardar Cambios</button>
+    </div>
+</div>
+
+
+
+
+@section Scripts{
+    <script src="~/scripts/angular.js"></script>
+    <script src="~/js/Categorias.js"></script>
+
+}

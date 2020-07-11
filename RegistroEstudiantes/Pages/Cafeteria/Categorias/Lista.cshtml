@@ -1,0 +1,31 @@
+﻿@page
+@model RegistroEstudiantes.Pages.Cafeteria.Categorias.ListaModel
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Cantidad Productos
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var categoria in Model.Categorias)
+        {
+        <tr>
+            <td>@categoria.Id</td>
+            <td>@categoria.Nombre</td>
+            <td>@categoria.CantidadDeProductos</td>
+            <td> <a class="btn btn-primary" asp-page="./Editar" asp-route-Id="@categoria.Id">Editar</a> </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-success" asp-page="./Editar">Crear Categoria</a>
