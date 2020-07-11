@@ -1,0 +1,32 @@
+﻿@page
+@model RegistroEstudiantes.Pages.Categorias.ListaModel
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Productos</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ListaCategorias)
+        {
+        <tr>
+            <td>
+                @item.Id
+            </td>
+            <td>
+                @item.Nombre
+            </td>
+            <td>
+                @item.CantidadProductos
+            </td>
+            <td>
+                <a asp-page="./Categoria" asp-route-Id="@item.Id" class="btn btn-primary">Editar</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

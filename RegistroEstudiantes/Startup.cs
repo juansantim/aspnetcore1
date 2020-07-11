@@ -37,6 +37,7 @@ namespace RegistroEstudiantes
             //    return new RegistroEstudiantesServiceAdo(Configuration.GetConnectionString("RegistroEstudiantesDB"));
             //});
 
+            
             services.AddRazorPages();
             services.AddControllers();
         }
