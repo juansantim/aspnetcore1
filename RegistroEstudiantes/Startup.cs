@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -32,11 +33,7 @@ namespace RegistroEstudiantes
 
             //services.AddSingleton<IMateriaService, inMemoryMateriasService>();
             services.AddScoped<IMateriaService, RegistroEstudiantesService>();
-            //services.AddScoped<IMateriaService, RegistroEstudiantesServiceAdo>(sp => 
-            //{
-            //    return new RegistroEstudiantesServiceAdo(Configuration.GetConnectionString("RegistroEstudiantesDB"));
-            //});
-
+;
             services.AddRazorPages();
             services.AddControllers();
         }
@@ -55,18 +52,32 @@ namespace RegistroEstudiantes
                 app.UseHsts();
             }
 
+            app.Use(NuestroMiddleWare);
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
                 endpoints.MapControllers();
             });
+        }
+
+        private RequestDelegate NuestroMiddleWare(RequestDelegate next)
+        {
+            return async httpRequest =>
+            {
+                if (httpRequest.Request.Path.StartsWithSegments("/MiMiddleware"))
+                {
+                    await httpRequest.Response.WriteAsync("Hola desde nuestro middleware");
+                }
+                else 
+                {
+                    await next(httpRequest);
+                }
+                
+            };
         }
     }
 }

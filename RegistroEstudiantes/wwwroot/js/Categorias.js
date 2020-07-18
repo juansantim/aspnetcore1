@@ -10,6 +10,7 @@ angular.module('Categorias').controller('CategoriaCtrl', ['$scope', '$http', fun
         Productos: []
     }
 
+    
     const urlParams = new URLSearchParams(window.location.search);
     const myParam = urlParams.get('Id');
 
@@ -46,6 +47,7 @@ angular.module('Categorias').controller('CategoriaCtrl', ['$scope', '$http', fun
 
     $scope.GuardarCambios = function ()
     {
+        $scope.Categoria.Area = parseInt($scope.Categoria.Area);
         $http.post('/api/Categorias/Guardar', $scope.Categoria).then(response =>
         {
             var categoria = response.data;
@@ -61,6 +63,14 @@ angular.module('Categorias').controller('CategoriaCtrl', ['$scope', '$http', fun
 
         })
     }
+
+    //$scope.Areas = [{ id: 0, nombre: 'N/A' }, { id: 1, nombre: 'Ingenieria' }, { id: 2, nombre: 'Informatica' }]
+
+    $http.get('/api/Categorias/GetAreas').then(response =>
+    {
+        var data = response.data;
+        $scope.Areas = data
+    })
 
 }])
 

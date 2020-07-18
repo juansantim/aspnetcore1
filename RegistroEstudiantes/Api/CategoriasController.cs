@@ -5,8 +5,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RegistroEstudiantes.Data;
+using RegistroEstudiantes.Dto;
+using RegistroEstudiantes.Model;
 using RegistroEstudiantes.Model.Cafeteria;
 
 namespace RegistroEstudiantes.Api
@@ -16,10 +19,12 @@ namespace RegistroEstudiantes.Api
     public class CategoriasController : ControllerBase
     {
         private readonly RegistroEstudiantesContext db;
+        private readonly IHtmlHelper helper;
 
-        public CategoriasController(RegistroEstudiantesContext db)
+        public CategoriasController(RegistroEstudiantesContext db, IHtmlHelper helper)
         {
             this.db = db;
+            this.helper = helper;
         }
 
         [Route("GetCategoria")]
@@ -66,6 +71,18 @@ namespace RegistroEstudiantes.Api
             }
 
             return categoria;
+        }
+
+        [Route("GetAreas")]
+        public List<DtoSelectItem> GetAreas() 
+        {
+           var areas =  helper.GetEnumSelectList<Area>();
+
+            return areas.Select(a => new DtoSelectItem
+            {
+                Id = int.Parse(a.Value),
+                Nombre = a.Text
+            }).ToList();
         }
     }
 }
