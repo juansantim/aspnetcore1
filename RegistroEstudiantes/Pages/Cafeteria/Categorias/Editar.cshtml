@@ -38,8 +38,10 @@
             <tbody>
                 <tr ng-repeat="p in Categoria.Productos">
                     <td>{{p.Id}}</td>
-                    <td> <input type="text" class="form-control" ng-model="p.Codigo" /> </td>
-                    <td> <input type="text" class="form-control" ng-model="p.Nombre" /></td>
+                    <td> <input type="text" class="form-control" ng-model="p.Codigo" ng-disabled="!p.Visible" /> </td>
+                    <td> <input type="text" class="form-control" ng-model="p.Nombre" ng-disabled="!p.Visible" /></td>
+                    <td> <button class="btn btn-danger" ng-click="Eliminar(p)" ng-disabled="!p.Visible">Eliminar</button> </td>
+                    <td> <button class="btn btn-success" ng-click="Deshacer(p)" ng-show="!p.Visible">Deshacer</button> </td>
                 </tr>
             </tbody>
         </table>

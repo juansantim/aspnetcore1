@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -36,6 +37,10 @@ namespace RegistroEstudiantes
 ;
             services.AddRazorPages();
             services.AddControllers();
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,7 +61,11 @@ namespace RegistroEstudiantes
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
-            app.UseAuthorization();
+
+            //Este middleware debe ir antes de useEndpoits
+            app.UseAuthentication();
+            app.UseAuthorization(); 
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();

@@ -34,6 +34,7 @@ namespace RegistroEstudiantes.Api
 
             foreach (var producto in categoria.Productos)
             {
+                producto.Visible = true;
                 producto.Categoria = null;
             }
 
@@ -55,11 +56,18 @@ namespace RegistroEstudiantes.Api
                 foreach (var prod in categoria.Productos)
                 {
                     db.Productos.Add(prod);
-                    
-                    if (prod.Id > 0) 
+
+                    if (prod.Id > 0)
                     {
                         db.Entry(prod).State = EntityState.Modified;
                     }
+
+                    if (!prod.Visible)
+                    {
+                        db.Productos.Remove(prod);
+                    }
+                    
+
                 }
             }
 

@@ -13,5 +13,8 @@ namespace RegistroEstudiantes.Model.Cafeteria
 
         public int CategoriaId { get; set; }
         public Categoria Categoria { get; set; }
+
+        [NotMapped]
+        public bool Visible { get; set; }
     }
 }

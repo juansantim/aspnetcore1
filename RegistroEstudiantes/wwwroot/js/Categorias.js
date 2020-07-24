@@ -21,7 +21,7 @@ angular.module('Categorias').controller('CategoriaCtrl', ['$scope', '$http', fun
         $http.get(`/api/Categorias/GetCategoria?Id=${id}`).then(response =>
         {
             var categoria = response.data;
-            console.log(categoria);
+            console.log('La categoria es =>',categoria);
 
             $scope.Categoria.Id = categoria.id;
             $scope.Categoria.Nombre = categoria.nombre;
@@ -33,7 +33,8 @@ angular.module('Categorias').controller('CategoriaCtrl', ['$scope', '$http', fun
                         Id: item.id,
                         Codigo: item.codigo,
                         Nombre: item.nombre,
-                        CategoriaId: item.categoriaId
+                        CategoriaId: item.categoriaId,
+                        Visible: item.visible
                     })
                 })
             }
@@ -47,7 +48,7 @@ angular.module('Categorias').controller('CategoriaCtrl', ['$scope', '$http', fun
 
     $scope.GuardarCambios = function ()
     {
-        $scope.Categoria.Area = parseInt($scope.Categoria.Area);
+        //$scope.Categoria.Area = parseInt($scope.Categoria.Area);
         $http.post('/api/Categorias/Guardar', $scope.Categoria).then(response =>
         {
             var categoria = response.data;
@@ -71,6 +72,15 @@ angular.module('Categorias').controller('CategoriaCtrl', ['$scope', '$http', fun
         var data = response.data;
         $scope.Areas = data
     })
+
+    $scope.Eliminar = function (producto)
+    {
+        producto.Visible = false;
+    }
+
+    $scope.Deshacer = function (producto) {
+        producto.Visible = true;
+    }
 
 }])
 
