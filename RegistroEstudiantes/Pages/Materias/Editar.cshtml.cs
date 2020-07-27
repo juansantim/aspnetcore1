@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -10,6 +11,7 @@ using RegistroEstudiantes.Model;
 
 namespace RegistroEstudiantes.Pages.Materias
 {
+    [Authorize(Roles = "Admin")]
     public class EditarModel : PageModel
     {
         private readonly IMateriaService service;

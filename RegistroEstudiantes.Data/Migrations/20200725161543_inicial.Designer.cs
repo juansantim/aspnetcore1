@@ -9,8 +9,8 @@ using RegistroEstudiantes.Data;
 namespace RegistroEstudiantes.Data.Migrations
 {
     [DbContext(typeof(RegistroEstudiantesContext))]
-    [Migration("20200711141047_categoria")]
-    partial class categoria
+    [Migration("20200725161543_inicial")]
+    partial class inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

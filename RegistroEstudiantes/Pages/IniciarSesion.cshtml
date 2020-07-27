@@ -1,0 +1,36 @@
+﻿@page
+@model RegistroEstudiantes.Pages.IniciarSesionModel
+@{
+    Layout = null;
+}
+
+
+
+
+<div class="login-form">
+    <form method="post">
+        <h2>Iniciar Sesion</h2>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Nombre de Usuario" required asp-for="loginModel.Login" />
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" placeholder="Contraseña" required asp-for="loginModel.Password" />
+        </div>
+        <div class="form-group">
+            <label>
+                <input type="checkbox" class="form-control" asp-for="loginModel.Recordarme">
+                Mantener sesión
+            </label>
+
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Iniciar sesion</button>
+        </div>
+    </form>
+</div>
+
+
+
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<link href="~/css/login.css" rel="stylesheet" />

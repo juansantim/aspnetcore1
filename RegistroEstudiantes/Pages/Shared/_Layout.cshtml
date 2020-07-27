@@ -33,6 +33,32 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacidad</a>
                         </li>
 
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">@User.Identity.Name</a>
+                                <div class="dropdown-menu">
+                                    <form asp-page="/CerrarSesion" method="post">
+                                        <a class="dropdown-item">
+                                            <input type="submit" value=" Cerrar Sesion" />
+                                        </a>
+                                    </form>
+
+                                    <a class="dropdown-item">
+                                        <a class="nav-link text-dark" asp-page="/Usuario/Identidad">Ver Identidad</a>
+                                    </a>
+                                </div>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/IniciarSesion">Iniciar Sesion</a>
+                            </li>
+
+                        }
+
+
                     </ul>
                 </div>
             </div>

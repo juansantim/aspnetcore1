@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -35,12 +36,17 @@ namespace RegistroEstudiantes
             //services.AddSingleton<IMateriaService, inMemoryMateriasService>();
             services.AddScoped<IMateriaService, RegistroEstudiantesService>();
 ;
-            services.AddRazorPages();
+            services.AddRazorPages().AddMvcOptions(o => o.Filters.Add(new AuthorizeFilter()));
             services.AddControllers();
 
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie();
+            //var span = DateTime.Now.AddSeconds(20) - DateTime.Now;
 
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(op => 
+            {
+                op.LoginPath = "/IniciarSesion";
+                op.AccessDeniedPath = "/AccesoDenegado";
+                //op.ExpireTimeSpan = span;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,9 +68,8 @@ namespace RegistroEstudiantes
             app.UseStaticFiles();
             app.UseRouting();
 
-            //Este middleware debe ir antes de useEndpoits
             app.UseAuthentication();
-            app.UseAuthorization(); 
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

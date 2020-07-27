@@ -2,7 +2,7 @@
 
 namespace RegistroEstudiantes.Data.Migrations
 {
-    public partial class categoria : Migration
+    public partial class inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

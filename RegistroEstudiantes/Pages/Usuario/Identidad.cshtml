@@ -1,0 +1,10 @@
+﻿@page
+@model RegistroEstudiantes.Pages.Usuario.IdentidadModel
+@{
+}
+
+    <p>
+        <label>Id del usuario: </label> @User.Claims.Where(c => c.Type == "Id").First().Value
+        <label>Nombre: </label> @User.Identity.Name
+        <label>Roles: </label>@User.Claims.Where(c => c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role").First().Value
+    </p>
